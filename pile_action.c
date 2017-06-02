@@ -1,6 +1,6 @@
 #include "swap.h"
 
-void swap_a(t_pile **pile_a)
+void swap_a(t_pile **pile_a, int hide)
 {
     t_pile *tmp;
     t_pile *tmp_second;
@@ -15,9 +15,11 @@ void swap_a(t_pile **pile_a)
         (*pile_a)->before = tmp;
         (*pile_a)->before->before = last;
     }
+    if(hide == 0)
+        ft_putstr("sa\n");
 }
 
-void swap_b(t_pile **pile_b)
+void swap_b(t_pile **pile_b, int hide)
 {
     t_pile *tmp;
     t_pile *tmp_second;
@@ -32,16 +34,19 @@ void swap_b(t_pile **pile_b)
         (*pile_b)->before = tmp;
         (*pile_b)->before->before = last;
     }
+    if(hide == 0)
+        ft_putstr("sb\n");
 }
 
 
 void swap_a_b(t_pile **pile_a, t_pile **pile_b)
 {
-    swap_a(pile_a);
-    swap_b(pile_b);
+    swap_a(pile_a, 1);
+    swap_b(pile_b, 1);
+    ft_putstr("ss\n");
 }
 
-void rotate_a(t_pile **pile_a)
+void rotate_a(t_pile **pile_a, int hide)
 {
     t_pile *tmp;
     t_pile *ret;
@@ -58,9 +63,11 @@ void rotate_a(t_pile **pile_a)
         (*pile_a)->before->before = NULL;
         *pile_a = ret;
     }
+    if(hide == 0)
+        ft_putstr("ra\n");
 }
 
-void rotate_b(t_pile **pile_b)
+void rotate_b(t_pile **pile_b, int hide)
 {
     t_pile *tmp;
     t_pile *ret;
@@ -77,16 +84,19 @@ void rotate_b(t_pile **pile_b)
         (*pile_b)->before->before = NULL;
         *pile_b = ret;
     }
+    if(hide == 0)
+        ft_putstr("rb\n");
 }
 
 
 void rotate_a_b(t_pile **pile_a, t_pile **pile_b)
 {
-    rotate_a(pile_a);
-    rotate_b(pile_b);
+    rotate_a(pile_a, 1);
+    rotate_b(pile_b, 1);
+    ft_putstr("rr\n");
 }
 
-void reverse_rotate_a(t_pile **pile_a)
+void reverse_rotate_a(t_pile **pile_a, int hide)
 {
     t_pile *tmp;
     t_pile *last;
@@ -105,9 +115,11 @@ void reverse_rotate_a(t_pile **pile_a)
             last->before = tmp;
             *pile_a = last;
     }
+    if(hide == 0)
+        ft_putstr("rra\n");
 }
 
-void reverse_rotate_b(t_pile **pile_b)
+void reverse_rotate_b(t_pile **pile_b, int hide)
 {
     t_pile *tmp;
     t_pile *last;
@@ -126,12 +138,15 @@ void reverse_rotate_b(t_pile **pile_b)
             last->before = tmp;
             *pile_b = last;
     }
+    if(hide == 0)
+        ft_putstr("rrb\n");
 }
 
 void reverse_rotate_a_b(t_pile **pile_a, t_pile **pile_b)
 {
-    reverse_rotate_a(pile_a);
-    reverse_rotate_b(pile_b);
+    reverse_rotate_a(pile_a, 1);
+    reverse_rotate_b(pile_b, 1);
+    ft_putstr("rrr\n");
 }
 
 void push_a(t_pile **pile_a, t_pile **pile_b)
@@ -150,6 +165,7 @@ void push_a(t_pile **pile_a, t_pile **pile_b)
         *pile_b = NULL;
         *pile_b = tmp;
     }
+    //ft_putstr("pa\n");
 }
 
 void push_b(t_pile **pile_a, t_pile **pile_b)
@@ -168,4 +184,5 @@ void push_b(t_pile **pile_a, t_pile **pile_b)
         *pile_a = NULL;
         *pile_a = tmp;
     }
+    //ft_putstr("pb\n");
 }

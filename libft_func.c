@@ -18,9 +18,9 @@ void ft_putstr(char *str)
     }
 }
 
-int	ft_atoi(const char *str)
+long int	ft_atoi(const char *str)
 {
-	int number;
+	long int number;
 	int negativ;
 	int index;
 
@@ -37,11 +37,35 @@ int	ft_atoi(const char *str)
 	while (str[index] >= '0' && str[index] <= '9')
 	{
 		number *= 10;
-		number += ((int)str[index] - 48);
+		number += ((long int)str[index] - 48);
 		index++;
 	}
 	if (negativ == 1)
 		return (-number);
 	else
 		return (number);
+}
+
+void	ft_putnbr(int n)
+{
+	unsigned int nb;
+	unsigned int w;
+
+	if (n < 0)
+	{
+		nb = -n;
+		write(1, "-", 1);
+	}
+	else
+		nb = n;
+	if (nb < 10)
+	{
+		w = nb + '0';
+		write(1, &w, 1);
+	}
+	else
+	{
+		ft_putnbr(nb / 10);
+		ft_putnbr(nb % 10);
+	}
 }
